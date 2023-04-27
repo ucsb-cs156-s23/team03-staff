@@ -1,6 +1,6 @@
 # Postgres Database
 
-When running on Heroku, we use a Postgres database supplied by Heroku.
+When running on Dokku, we use a Postgres database supplied by Dokku.
 
 # Accessing Database Console
 

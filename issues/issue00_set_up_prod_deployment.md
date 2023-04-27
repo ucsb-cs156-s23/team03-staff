@@ -20,7 +20,7 @@ Set up a team deployment for prod on Dokku
         
 - [ ] The main branch is deployed on Dokku at, for example,
       <https://team02-prod.dokku-xx-cs.ucsb.edu> (substituting your
-      own team name for `f22-5pm-1`).
+      own dokku instance number in place of `xx`)
 - [ ] A links to both your team's production is added to the top of your team's `README.md` file, replacing the `TODO` entry.
 
 

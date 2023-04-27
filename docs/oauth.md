@@ -2,12 +2,12 @@
 
 This Spring Boot application is set up to use Google OAuth as it's authentication scheme.
 
-Setting this up on localhost requires the first two steps below; getting this to work on Heroku requires an additional third step.
+Setting this up on localhost requires the first two steps below; getting this to work on Dokku requires an additional third step.
 
 1. Obtaining a Google *client id* and *client secret*, which is
    done at the [Google Developer Console](https://console.cloud.google.com/).
 2. Configuring the `.env` file with these values.
-3. Copying the `.env` values to the Heroku app's configuration values.
+3. Copying the `.env` values to the Dokku app's configuration values.
 
 Each of these three steps is explained in more detail below.
 
@@ -37,15 +37,15 @@ Each of these three steps is explained in more detail below.
    * On that page, near the top, click the button for `+ CREATE CREDENTIALS`
    * This makes a pull-down menu where you can select `OAuth Client ID`
    * For Application Type, select `Web Application`
-   * For name, choose something you will remember; I suggest using the name of your repo, or the name of the Heroku application
+   * For name, choose something you will remember; I suggest using the name of your repo, or the name of the Dokku application
    * Scroll down to the part of the page that says: `Authorized redirect URIs`
 
 3. Under `Authorized redirect URIs`, you'll need to click the `+ ADD URI` button twice to enter two addresses:
 
    * For localhost, enter: `http://localhost:8080/login/oauth2/code/google`
      - Note that this *must* be `http` not `https`
-   * For Heroku, enter: `https://myappname.herokuapp.com/login/oauth2/code/google`
-     - Note that you should substitute in *your* app name in place of `my-app-name`
+   * For Dokku, enter: `https://myappname.dokku-xx.cs.ucsb.edu/login/oauth2/code/google`
+     - Note that you should substitute in *your* app name in place of `my-app-name`, and the correct number in place of `xx`
      - Note that this *must* be `https` not `http`
 
    ![image](https://user-images.githubusercontent.com/1119017/149854295-8e1c4c63-929c-4706-972d-1962c644a40a.png)
@@ -121,7 +121,7 @@ For example, when I was getting this error message, it's because I put in this f
 
 Rookie mistake!  I literally had `my-heroku-app` instead of `demo-spring-react-example`. 
 
-Change it to the correct URI, click save.  Then go back to the URL for the home page of your app and refresh the page (you don't need to restart the Heroku backend; just refresh your browser page.)  Click login again, and you should get something like this:
+Change it to the correct URI, click save.  Then go back to the URL for the home page of your app and refresh the page (you don't need to restart the Dokku backend; just refresh your browser page.)  Click login again, and you should get something like this:
 
 
 <img src="https://user-images.githubusercontent.com/1119017/149856532-b1cda813-bd3f-4fd1-a79e-630e5929d7be.png" alt="Choose an Account" width="600" />
