@@ -1,8 +1,13 @@
 # STARTER-team02
 
-TODO: Add a link to the deployed Heroku app for your team here, e.g.
+TODO: Adjust the link to the deployed production app for your team here, then remove this TODO.
 
-* <https://f22-7pm-3-team02.herokuapp.com>
+* Production: <https://team02-prod.dokku-xx.cs.ucsb.edu>
+
+TODO: Add a link to the deployed qa app for your team here, then remove this TODO
+
+* QA: <https://team02-qa.dokku-xx.cs.ucsb.edu>
+
 
 # Setup before running application
 
@@ -35,26 +40,24 @@ If it doesn't work at first, e.g. you have a blank page on  <http://localhost:80
 If you see the following on localhost, make sure that you also have the frontend code running in a separate window.
 
 ```
-Failed to connect to the frontend server... On Heroku, be sure that PRODUCTION is defined.  On localhost, open a second terminal window, cd into frontend and type: npm install; npm start";
+Failed to connect to the frontend server... On Dokku, be sure that PRODUCTION is defined.  On localhost, open a second terminal window, cd into frontend and type: npm install; npm start";
 ```
 
-# Getting Started on Heroku
+# Getting Started on Dokku
 
-On Heroku, you'll need to set the following configuration variable:
+On Dokku, you'll need to set the following configuration variable:
 
-* Using the Heroku CLI:
-  ```
-  heroku config:set PRODUCTION=true --app <heroku app name>
-  ```
-* Or set it on the Heroku Dashboard:
-  ![image](https://user-images.githubusercontent.com/1119017/149855768-7b56164a-98f7-4357-b877-da34b7bd9ea4.png)
+```
+dokku config:set team02-prod PRODUCTION=true
+dokku config:set team02-qa PRODUCTION=true
+```
 
 You'll also need to follow the OAuth set up instructions here: [`docs/oauth.md`](docs/oauth.md).
 
-If you get the following message on Heroku, it probably means that you failed to setup the `PRODUCTION` environment variable.
+If you get the following message on Dokku, it probably means that you failed to setup the `PRODUCTION` environment variable.
 
 ```
-Failed to connect to the frontend server... On Heroku, be sure that PRODUCTION is defined.  On localhost, open a second terminal window, cd into frontend and type: npm install; npm start";
+Failed to connect to the frontend server... On Dokku, be sure that PRODUCTION is defined.  On localhost, open a second terminal window, cd into frontend and type: npm install; npm start";
 ```
 
 # Accessing swagger
@@ -81,7 +84,8 @@ On localhost:
 * You can access the database console via a special route, <http://localhost:8080/h2-console>
 * For more info, see [docs/h2-database.md](/docs/h2-database.md)
 
-On Heroku:
-* The SQL database is a postgres database provisioned automatically by Heroku
-* You can reset it with `heroku pg:reset --app app-name-goes-here`
-* More info and instructions for access the SQL prompt are at [docs/postgres-database.md](/docs/postgres-database.md)
+On Dokku:
+
+* Use: `dokku postgres:list` to see a list of the databases
+* Use: `dokku postgres:connect db-name` to connect to the postgres command line for a specific database
+* Use: `dokku postgres` to list all of the available commands.

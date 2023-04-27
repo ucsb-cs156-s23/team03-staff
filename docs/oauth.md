@@ -89,50 +89,15 @@ ADMIN_EMAILS=phtcon@ucsb.edu,cgaucho@ucsb.edu,ldelplaya@ucsb.edu
 
 With this done, you should be all set to run on localhost.
 
-For Heroku, there is one more step.
+For Dokku, there is one more step.
 
-## Step 3: Copying `.env` values to Heroku
+## Step 3: Copying `.env` values to Dokku
 
-The easy way, using the Heroku CLI:
+For each value, do this:
 
-(Note: if you don't access to the Heroku CLI, scroll down to "the tedious way")
-
-1.  Make sure you have the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install) installed.
-2.  Login with `heroku login`
-3.  Use this command, with the name of your app in place of `my-heroku-app`
-
-    ```
-    heroku config:set --app my-heroku-app  `cat .env` 
-    ```
-
-    You should get output like this:
-
-    ```
-    Setting GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, ADMIN_EMAILS and restarting ⬢ demo-spring-react-example... done, v6
-    ```
-
-    You can check the values by visiting the `Settings` tab 
-    in the Heroku Dashboard, and clicking `Reveal Config Vars`
-
-    If the command fails with the following error:
-
-    ```
-     is invalid. Must be in the format FOO=bar.
-    ```
-
-    Ensure that your `.env` file does not have any empty lines, then retry the command.
-
-The slightly more tedious way: 
-
-1. In the Heroku Dashboard, visit the `Settings` tab 
-   then click `Reveal Config Vars`.
-2. For each variable in `.env`, create a Config Var entry
-   with the corresponding name and value.  
-   
-   Be sure that you preserve case: if it's `CLIENT_SECRET`, you must use `CLIENT_SECRET` not `client_secret`.
-
-3. When finished, restart the application by going to the 
-   `Deploy` tab and clicking `Deploy Branch`.
+```
+dokku config:set app-name VARIABLE=value
+```
 
 ## Troubleshooting
 
