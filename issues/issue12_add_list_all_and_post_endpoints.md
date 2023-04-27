@@ -1,16 +1,16 @@
-Create `UCSBDiningCommonsMenuItemController`, add `GET` (index) and `POST` (create)
+Create `RestaurantController`, add `GET` (index) and `POST` (create)
 
 # Acceptance Criteria:
 
-- [ ] There is a controller file `UCSBDiningCommonsMenuItemController.java`
+- [ ] There is a controller file `RestaurantController.java`
       in the expected directory.
-- [ ] In `UCSBDiningCommonsMenuItemController.java` there is 
-      code for a `GET /api/UCSBDiningCommonsMenuItem/all` endpoint 
-      that returns a JSON list of all `UCSBDiningCommonsMenuItem`s in the database.
+- [ ] In `RestaurantController.java` there is 
+      code for a `GET /api/Restaurant/all` endpoint 
+      that returns a JSON list of all `Restaurant`s in the database.
       (We sometimes call this an *index* action since it lists all
       items in the database.)
-- [ ] In `UCSBDiningCommonsMenuItemController.java` there is 
-      code for a `POST /api/UCSBDiningCommonsMenuItem/post` endpoint
+- [ ] In `RestaurantController.java` there is 
+      code for a `POST /api/Restaurant/post` endpoint
       that can be used to create a new entry in the table. (This
       is a *create* action.)
 - [ ] The Swagger-UI endpoints for these are well documented so that
@@ -23,9 +23,9 @@ Create `UCSBDiningCommonsMenuItemController`, add `GET` (index) and `POST` (crea
 - [ ] The `GET` and `POST` endpoints work as expected when the 
       app is deployed to Heroku.
 - [ ] There is full test coverage (Jacoco) for the methods in 
-      `UCSBDiningCommonsMenuItemController.java`
+      `RestaurantController.java`
 - [ ] There is full mutation test coverage (Pitest) for the methods in
-      `UCSBDiningCommonsMenuItemController.java`
+      `RestaurantController.java`
 
 
 
