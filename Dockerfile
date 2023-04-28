@@ -22,6 +22,6 @@ COPY src /home/app/src
 COPY lombok.config /home/app
 COPY pom.xml /home/app
 
-RUN mvn -B -DskipTests -f /home/app/pom.xml clean package
+RUN mvn -B -Pproduction -Ph2 -DskipTests -f /home/app/pom.xml clean package
 
 ENTRYPOINT ["sh", "-c", "java -jar /home/app/target/*.jar"]
