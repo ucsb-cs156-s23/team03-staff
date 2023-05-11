@@ -15,7 +15,7 @@ describe("AppNavbar tests", () => {
         const currentUser = currentUserFixtures.userOnly;
         const doLogin = jest.fn();
 
-        const { getByText } = render(
+        const { getByText, findByText } = render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
                     <AppNavbar currentUser={currentUser} doLogin={doLogin} />
@@ -23,7 +23,7 @@ describe("AppNavbar tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(() => expect(getByText("Welcome, pconrad.cis@gmail.com")).toBeInTheDocument());
+        await findByText("Welcome, pconrad.cis@gmail.com");
     });
 
     test("renders correctly for admin user", async () => {
@@ -31,7 +31,7 @@ describe("AppNavbar tests", () => {
         const currentUser = currentUserFixtures.adminUser;
         const doLogin = jest.fn();
 
-        const { getByText , getByTestId } = render(
+        const { getByText , getByTestId, findByText } = render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
                     <AppNavbar currentUser={currentUser} doLogin={doLogin} />
@@ -39,7 +39,7 @@ describe("AppNavbar tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(() => expect(getByText("Welcome, phtcon@ucsb.edu")).toBeInTheDocument());
+        await findByText("Welcome, phtcon@ucsb.edu");
         const adminMenu = getByTestId("appnavbar-admin-dropdown");
         expect(adminMenu).toBeInTheDocument();        
     });
@@ -51,7 +51,7 @@ describe("AppNavbar tests", () => {
 
         const doLogin = jest.fn();
 
-        const { getByText  } = render(
+        const { getByText, findByText  } = render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
                     <AppNavbar currentUser={currentUser} systemInfo={systemInfo} doLogin={doLogin} />
@@ -59,7 +59,7 @@ describe("AppNavbar tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(() => expect(getByText("H2Console")).toBeInTheDocument());
+        await findByText("H2Console");
         const swaggerMenu = getByText("Swagger");
         expect(swaggerMenu).toBeInTheDocument();        
     });
@@ -72,7 +72,7 @@ describe("AppNavbar tests", () => {
 
         const doLogin = jest.fn();
 
-        const {getByTestId } = render(
+        const {getByTestId, findByTestId } = render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
                     <AppNavbar currentUser={currentUser} systemInfo={systemInfo} doLogin={doLogin} />
@@ -80,7 +80,7 @@ describe("AppNavbar tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(() => expect(getByTestId("appnavbar-todos-dropdown")).toBeInTheDocument());
+        await findByTestId("appnavbar-todos-dropdown");
     });
 
     test("renders the AppNavbarLocalhost when on http://localhost:3000", async () => {
@@ -92,7 +92,7 @@ describe("AppNavbar tests", () => {
         delete window.location
         window.location = new URL('http://localhost:3000')
 
-        const {getByTestId } = render(
+        const {getByTestId, findByTestId } = render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
                     <AppNavbar currentUser={currentUser} systemInfo={systemInfo} doLogin={doLogin} />
@@ -100,7 +100,7 @@ describe("AppNavbar tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(() => expect(getByTestId("AppNavbarLocalhost")).toBeInTheDocument());
+        await findByTestId("AppNavbarLocalhost");
     });
 
     test("renders the AppNavbarLocalhost when on http://127.0.0.1:3000", async () => {
@@ -112,7 +112,7 @@ describe("AppNavbar tests", () => {
         delete window.location
         window.location = new URL('http://127.0.0.1:3000')
 
-        const {getByTestId } = render(
+        const {getByTestId, findByTestId } = render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
                     <AppNavbar currentUser={currentUser} systemInfo={systemInfo} doLogin={doLogin} />
@@ -120,7 +120,7 @@ describe("AppNavbar tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(() => expect(getByTestId("AppNavbarLocalhost")).toBeInTheDocument());
+        await findByTestId("AppNavbarLocalhost");
     });
 
     test("renders the AppNavbarLocalhost when on http://127.0.0.1:3000", async () => {
@@ -132,7 +132,7 @@ describe("AppNavbar tests", () => {
         delete window.location
         window.location = new URL('http://127.0.0.1:3000')
 
-        const {getByTestId } = render(
+        const {getByTestId, findByTestId } = render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
                     <AppNavbar currentUser={currentUser} systemInfo={systemInfo} doLogin={doLogin} />
@@ -140,7 +140,7 @@ describe("AppNavbar tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(() => expect(getByTestId("AppNavbarLocalhost")).toBeInTheDocument());
+        await findByTestId("AppNavbarLocalhost");
 
     });
 
@@ -153,7 +153,7 @@ describe("AppNavbar tests", () => {
         delete window.location
         window.location = new URL('http://localhost:8080')
 
-        const {getByTestId, queryByTestId } = render(
+        const {getByTestId, queryByTestId, findByTestId } = render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
                     <AppNavbar currentUser={currentUser} systemInfo={systemInfo} doLogin={doLogin} />
@@ -161,7 +161,7 @@ describe("AppNavbar tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(() => expect(getByTestId("AppNavbar")).toBeInTheDocument());
+        await findByTestId("AppNavbar");
         expect(queryByTestId(/AppNavbarLocalhost/i)).toBeNull();
     });
 
@@ -172,7 +172,7 @@ describe("AppNavbar tests", () => {
 
         const doLogin = jest.fn();
 
-        const {getByTestId  } = render(
+        const {getByTestId, findByTestId  } = render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
                     <AppNavbar currentUser={currentUser} systemInfo={systemInfo} doLogin={doLogin} />
@@ -180,12 +180,12 @@ describe("AppNavbar tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(() => expect(getByTestId("appnavbar-ucsbdates-dropdown")).toBeInTheDocument());
+        await findByTestId("appnavbar-ucsbdates-dropdown");
         const dropdown = getByTestId("appnavbar-ucsbdates-dropdown");
         const aElement = dropdown.querySelector("a");
         expect(aElement).toBeInTheDocument();
         aElement?.click();
-        await waitFor( () => expect(getByTestId("appnavbar-ucsbdates-list")).toBeInTheDocument() );
+        await findByTestId("appnavbar-ucsbdates-list");
 
     });
 
@@ -196,7 +196,7 @@ describe("AppNavbar tests", () => {
 
         const doLogin = jest.fn();
 
-        const {getByTestId  } = render(
+        const {getByTestId, findByTestId  } = render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
                     <AppNavbar currentUser={currentUser} systemInfo={systemInfo} doLogin={doLogin} />
@@ -204,12 +204,12 @@ describe("AppNavbar tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(() => expect(getByTestId("appnavbar-ucsbdates-dropdown")).toBeInTheDocument());
+        await findByTestId("appnavbar-ucsbdates-dropdown");
         const dropdown = getByTestId("appnavbar-ucsbdates-dropdown");
         const aElement = dropdown.querySelector("a");
         expect(aElement).toBeInTheDocument();
         aElement?.click();
-        await waitFor( () => expect(getByTestId(/appnavbar-ucsbdates-create/)).toBeInTheDocument() );
+        await findByTestId(/appnavbar-ucsbdates-create/);
 
     });
 });

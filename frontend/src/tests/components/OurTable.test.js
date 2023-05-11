@@ -44,29 +44,29 @@ describe("OurTable tests", () => {
     });
 
     test("The button appears in the table", async () => {
-        const {getByTestId} = render(
+        const {getByTestId, findByTestId} = render(
             <OurTable columns={columns} data={threeRows} />
         );
 
-        await waitFor(()=> expect(getByTestId("testId-cell-row-0-col-Click-button")).toBeInTheDocument() );
+        await findByTestId("testId-cell-row-0-col-Click-button");
         const button = getByTestId("testId-cell-row-0-col-Click-button");
         fireEvent.click(button);
         await waitFor(()=>expect(clickMeCallback).toBeCalledTimes(1));
     });
 
     test("default testid is testId", async () => {
-        const {getByTestId } = render(
+        const {getByTestId, findByTestId } = render(
             <OurTable columns={columns} data={threeRows} />
         );
-        await waitFor( ()=> expect(getByTestId("testid-header-col1")).toBeInTheDocument() );
+        await findByTestId("testid-header-col1");
     });
 
     test("click on a header and a sort caret should appear", async () => {
-        const {getByTestId, getByText } = render(
+        const {getByTestId, getByText, findByTestId, findByText } = render(
             <OurTable columns={columns} data={threeRows} testid={"sampleTestId"} />
         );
 
-        await waitFor( ()=> expect(getByTestId("sampleTestId-header-col1")).toBeInTheDocument() );
+        await findByTestId("sampleTestId-header-col1");
         const col1Header = getByTestId("sampleTestId-header-col1");
 
         const col1SortCarets = getByTestId("sampleTestId-header-col1-sort-carets");
@@ -76,10 +76,10 @@ describe("OurTable tests", () => {
         expect(col1Row0).toHaveTextContent("Hello");
 
         fireEvent.click(col1Header);
-        await waitFor( ()=> expect(getByText("🔼")).toBeInTheDocument() );
+        await findByText("🔼");
 
         fireEvent.click(col1Header);
-        await waitFor( ()=> expect(getByText("🔽")).toBeInTheDocument() );
+        await findByText("🔽");
 
         
 

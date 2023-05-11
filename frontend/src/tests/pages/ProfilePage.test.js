@@ -18,7 +18,7 @@ describe("ProfilePage tests", () => {
         axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
         axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
 
-        const { getByText } = render(
+        const { getByText, findByText } = render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
                     <ProfilePage />
@@ -26,7 +26,7 @@ describe("ProfilePage tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor( () => expect(getByText("Phillip Conrad")).toBeInTheDocument() );
+        await findByText("Phillip Conrad");
         expect(getByText("pconrad.cis@gmail.com")).toBeInTheDocument();
     });
 
@@ -36,7 +36,7 @@ describe("ProfilePage tests", () => {
         axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.adminUser);
         axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
 
-        const { getByText, getByTestId } = render(
+        const { getByText, getByTestId, findByText } = render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
                     <ProfilePage />
@@ -44,7 +44,7 @@ describe("ProfilePage tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor( () => expect(getByText("Phill Conrad")).toBeInTheDocument() );
+        await findByText("Phill Conrad");
         expect(getByText("phtcon@ucsb.edu")).toBeInTheDocument();
         expect(getByTestId("role-badge-user")).toBeInTheDocument();
         expect(getByTestId("role-badge-admin")).toBeInTheDocument();

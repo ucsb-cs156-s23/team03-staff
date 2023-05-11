@@ -52,14 +52,14 @@ describe("UCSBDatesEditPage tests", () => {
 
             const restoreConsole = mockConsole();
 
-            const {getByText, queryByTestId} = render(
+            const {getByText, queryByTestId, findByText} = render(
                 <QueryClientProvider client={queryClient}>
                     <MemoryRouter>
                         <UCSBDatesEditPage />
                     </MemoryRouter>
                 </QueryClientProvider>
             );
-            await waitFor(() => expect(getByText("Edit UCSBDate")).toBeInTheDocument());
+            await findByText("Edit UCSBDate");
             expect(queryByTestId("UCSBDateForm-quarterYYYYQ")).not.toBeInTheDocument();
             restoreConsole();
         });
@@ -101,7 +101,7 @@ describe("UCSBDatesEditPage tests", () => {
 
         test("Is populated with the data provided", async () => {
 
-            const { getByTestId } = render(
+            const { getByTestId, findByTestId } = render(
                 <QueryClientProvider client={queryClient}>
                     <MemoryRouter>
                         <UCSBDatesEditPage />
@@ -109,7 +109,7 @@ describe("UCSBDatesEditPage tests", () => {
                 </QueryClientProvider>
             );
 
-            await waitFor(() => expect(getByTestId("UCSBDateForm-quarterYYYYQ")).toBeInTheDocument());
+            await findByTestId("UCSBDateForm-quarterYYYYQ");
 
             const idField = getByTestId("UCSBDateForm-id");
             const quarterYYYYQField = getByTestId("UCSBDateForm-quarterYYYYQ");
@@ -127,7 +127,7 @@ describe("UCSBDatesEditPage tests", () => {
 
 
 
-            const { getByTestId } = render(
+            const { getByTestId, findByTestId } = render(
                 <QueryClientProvider client={queryClient}>
                     <MemoryRouter>
                         <UCSBDatesEditPage />
@@ -135,7 +135,7 @@ describe("UCSBDatesEditPage tests", () => {
                 </QueryClientProvider>
             );
 
-            await waitFor(() => expect(getByTestId("UCSBDateForm-quarterYYYYQ")).toBeInTheDocument());
+            await findByTestId("UCSBDateForm-quarterYYYYQ");
 
             const idField = getByTestId("UCSBDateForm-id");
             const quarterYYYYQField = getByTestId("UCSBDateForm-quarterYYYYQ");

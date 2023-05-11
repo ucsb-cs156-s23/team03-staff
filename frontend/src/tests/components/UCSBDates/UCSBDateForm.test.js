@@ -13,26 +13,26 @@ jest.mock('react-router-dom', () => ({
 
 describe("UCSBDateForm tests", () => {
 
-    test("renders correctly ", async () => {
+    test("renders correctly", async () => {
 
-        const { getByText } = render(
+        const { getByText, findByText } = render(
             <Router  >
                 <UCSBDateForm />
             </Router>
         );
-        await waitFor(() => expect(getByText(/Quarter YYYYQ/)).toBeInTheDocument());
-        await waitFor(() => expect(getByText(/Create/)).toBeInTheDocument());
+        await findByText(/Quarter YYYYQ/);
+        await findByText(/Create/);
     });
 
 
-    test("renders correctly when passing in a UCSBDate ", async () => {
+    test("renders correctly when passing in a UCSBDate", async () => {
 
-        const { getByText, getByTestId } = render(
+        const { getByText, getByTestId, findByTestId } = render(
             <Router  >
                 <UCSBDateForm initialUCSBDate={ucsbDatesFixtures.oneDate} />
             </Router>
         );
-        await waitFor(() => expect(getByTestId(/UCSBDateForm-id/)).toBeInTheDocument());
+        await findByTestId(/UCSBDateForm-id/);
         expect(getByText(/Id/)).toBeInTheDocument();
         expect(getByTestId(/UCSBDateForm-id/)).toHaveValue("1");
     });
@@ -40,12 +40,12 @@ describe("UCSBDateForm tests", () => {
 
     test("Correct Error messsages on bad input", async () => {
 
-        const { getByTestId, getByText } = render(
+        const { getByTestId, getByText, findByTestId, findByText } = render(
             <Router  >
                 <UCSBDateForm />
             </Router>
         );
-        await waitFor(() => expect(getByTestId("UCSBDateForm-quarterYYYYQ")).toBeInTheDocument());
+        await findByTestId("UCSBDateForm-quarterYYYYQ");
         const quarterYYYYQField = getByTestId("UCSBDateForm-quarterYYYYQ");
         const localDateTimeField = getByTestId("UCSBDateForm-localDateTime");
         const submitButton = getByTestId("UCSBDateForm-submit");
@@ -54,23 +54,23 @@ describe("UCSBDateForm tests", () => {
         fireEvent.change(localDateTimeField, { target: { value: 'bad-input' } });
         fireEvent.click(submitButton);
 
-        await waitFor(() => expect(getByText(/QuarterYYYYQ must be in the format YYYYQ/)).toBeInTheDocument());
+        await findByText(/QuarterYYYYQ must be in the format YYYYQ/);
         expect(getByText(/localDateTime must be in ISO format/)).toBeInTheDocument();
     });
 
     test("Correct Error messsages on missing input", async () => {
 
-        const { getByTestId, getByText } = render(
+        const { getByTestId, getByText, findByTestId, findByText } = render(
             <Router  >
                 <UCSBDateForm />
             </Router>
         );
-        await waitFor(() => expect(getByTestId("UCSBDateForm-submit")).toBeInTheDocument());
+        await findByTestId("UCSBDateForm-submit");
         const submitButton = getByTestId("UCSBDateForm-submit");
 
         fireEvent.click(submitButton);
 
-        await waitFor(() => expect(getByText(/QuarterYYYYQ is required./)).toBeInTheDocument());
+        await findByText(/QuarterYYYYQ is required./);
         expect(getByText(/Name is required./)).toBeInTheDocument();
         expect(getByText(/LocalDateTime is required./)).toBeInTheDocument();
 
@@ -81,12 +81,12 @@ describe("UCSBDateForm tests", () => {
         const mockSubmitAction = jest.fn();
 
 
-        const { getByTestId, queryByText } = render(
+        const { getByTestId, queryByText, findByTestId } = render(
             <Router  >
                 <UCSBDateForm submitAction={mockSubmitAction} />
             </Router>
         );
-        await waitFor(() => expect(getByTestId("UCSBDateForm-quarterYYYYQ")).toBeInTheDocument());
+        await findByTestId("UCSBDateForm-quarterYYYYQ");
 
         const quarterYYYYQField = getByTestId("UCSBDateForm-quarterYYYYQ");
         const nameField = getByTestId("UCSBDateForm-name");
@@ -106,14 +106,14 @@ describe("UCSBDateForm tests", () => {
     });
 
 
-    test("Test that navigate(-1) is called when Cancel is clicked", async () => {
+    test("that navigate(-1) is called when Cancel is clicked", async () => {
 
-        const { getByTestId } = render(
+        const { getByTestId, findByTestId } = render(
             <Router  >
                 <UCSBDateForm />
             </Router>
         );
-        await waitFor(() => expect(getByTestId("UCSBDateForm-cancel")).toBeInTheDocument());
+        await findByTestId("UCSBDateForm-cancel");
         const cancelButton = getByTestId("UCSBDateForm-cancel");
 
         fireEvent.click(cancelButton);

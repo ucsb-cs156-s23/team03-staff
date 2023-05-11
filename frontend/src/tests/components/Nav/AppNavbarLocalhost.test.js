@@ -3,12 +3,12 @@ import AppNavbarLocalhost from "main/components/Nav/AppNavbarLocalhost";
 
 describe("AppNavbarLocalhost tests", () => {
 
-    test("renders correctly ", async () => {
-        const { getByText } = render(
+    test("renders correctly", async () => {
+        const { getByText, findByText } = render(
             <AppNavbarLocalhost />
         );
 
-        await waitFor(() => expect(getByText(/Running on /)).toBeInTheDocument());
+        await findByText(/Running on /);
     });
 
 });

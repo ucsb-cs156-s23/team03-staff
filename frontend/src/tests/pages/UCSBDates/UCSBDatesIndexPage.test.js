@@ -137,7 +137,7 @@ describe("UCSBDatesIndexPage tests", () => {
         expect(queryByTestId(`${testId}-cell-row-0-col-id`)).not.toBeInTheDocument();
     });
 
-    test("test what happens when you click delete, admin", async () => {
+    test("what happens when you click delete, admin", async () => {
         setupAdminUser();
 
         const queryClient = new QueryClient();

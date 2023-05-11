@@ -27,7 +27,7 @@ describe("AdminUsersPage tests", () => {
         const queryClient = new QueryClient();
         axiosMock.onGet("/api/admin/users").reply(200, usersFixtures.threeUsers);
 
-        const { getByText } = render(
+        const { getByText, findByText } = render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
                     <AdminUsersPage />
@@ -35,9 +35,9 @@ describe("AdminUsersPage tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(() => expect(getByText("Users")).toBeInTheDocument());
+        await findByText("Users");
 
-        await waitFor(() => expect(getByText("Users")).toBeInTheDocument());
+        await findByText("Users");
 
 
     });
