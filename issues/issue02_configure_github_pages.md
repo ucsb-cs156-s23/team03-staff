@@ -5,7 +5,7 @@ Configure Github Pages
 - [ ] You have configured your site for GitHub pages
       as explained here:
 
-      * <https://github.com/ucsb-cs156-s23/STARTER-team02/blob/main/docs/github-pages.md>
+      * <https://github.com/ucsb-cs156-s23/STARTER-team03/blob/main/docs/github-pages.md>
 
 
 - [ ] As a result, there is a link to the Github pages
@@ -15,7 +15,7 @@ Configure Github Pages
 - [ ] When you click on that link, a page comes up 
       that looks like the one in the documentation here
 
-       * <https://github.com/ucsb-cs156-s23/STARTER-team02/blob/main/docs/github-pages.md>
+       * <https://github.com/ucsb-cs156-s23/STARTER-team03/blob/main/docs/github-pages.md>
 
 
 - [ ] The `javadoc` and `storybook` links both take you

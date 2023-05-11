@@ -3,18 +3,18 @@ Set up a team deployment for qa on Dokku
 # Acceptance Criteria:
 
 - [ ] On your team's dokku instance, there is an app
-      called team02-qa
+      called team03-qa
       
       Command:
 
       ```
-      dokku apps:create team02-qa
+      dokku apps:create team03-qa
       ```
 
       See: <https://ucsb-cs156.github.io/topics/dokku/>
 
 - [ ] On your team's dokku instance, you have enabled
-      https for `team02-qa`
+      https for `team03-qa`
       
       See: <https://ucsb-cs156.github.io/topics/dokku/enabling_https.html>
 
@@ -25,7 +25,7 @@ Set up a team deployment for qa on Dokku
       <https://ucsb-cs156.github.io/topics/dokku/postgres_database.html>
 
 
-- [ ] Your team's team02-qa app is configured for 
+- [ ] Your team's team03-qa app is configured for 
       Google OAuth. This requires creating 
       a `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`
       for the app, and the configuring the
@@ -34,7 +34,7 @@ Set up a team deployment for qa on Dokku
       * <https://ucsb-cs156.github.io/topics/oauth/oauth_google_setup.html>
       * <https://ucsb-cs156.github.io/topics/dokku/environment_variables.html>
 
-- [ ] Your team's team02-qa app is configured with the 
+- [ ] Your team's team03-qa app is configured with the 
       environment variables `PRODUCTION=true` and
       `ADMIN_EMAILS=...`.
 
@@ -46,7 +46,7 @@ Set up a team deployment for qa on Dokku
       * <https://ucsb-cs156.github.io/topics/dokku/environment_variables.html>
         
 - [ ] The main branch is deployed on Dokku at, for example,
-      <https://team02-prod.dokku-xx-cs.ucsb.edu> (substituting your
+      <https://team03-prod.dokku-xx-cs.ucsb.edu> (substituting your
       own dokku instance number in place of `xx`)
 
 - [ ] A links to your team's qa deployment is added to the top of your team's `README.md` file, replacing the `TODO` entry.
