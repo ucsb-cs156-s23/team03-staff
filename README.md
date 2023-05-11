@@ -20,6 +20,11 @@ The code in this repo requires:
 
 * Version v16.20.0 of node (precisely)
   - To install this version of node, you can use `nvm` ([Node Version Manager](https://ucsb-cs156.github.io/topics/node/node_nvm.html))
+  - The commands needed are: 
+    ```
+    nvm install 16.20.0  # one time step
+    nvm use 16.20.0      # every time you start a new shell
+    ```
 * Version 17 of Java
   - Any version 17.x.y will do; there are no known requirements for a specific version, so using the latest 17.x.y version
     is suggested.
