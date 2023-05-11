@@ -1,4 +1,4 @@
-# STARTER-team02
+# STARTER-team03
 
 ```
 TODO: Adjust the link to the deployed production app 
@@ -14,6 +14,23 @@ for your team here, then remove this TODO.
 
 * QA: <https://team02-qa.dokku-xx.cs.ucsb.edu>
 
+# Environment needed
+
+The code in this repo requires:
+
+* Version v16.20.0 of node (precisely)
+  - To install this version of node, you can use `nvm` ([Node Version Manager](https://ucsb-cs156.github.io/topics/node/node_nvm.html))
+  - The commands needed are: 
+    ```
+    nvm install 16.20.0  # one time step
+    nvm use 16.20.0      # every time you start a new shell
+    ```
+* Version 17 of Java
+  - Any version 17.x.y will do; there are no known requirements for a specific version, so using the latest 17.x.y version
+    is suggested.
+
+See also: `docs/versions.md`, which describes the places in the code base that need to change if/when
+the version of Java or node needs to be updated.
 
 # Configuring GitHub Pages for the documentation
 
@@ -47,11 +64,8 @@ Then:
   npm install  # only on first run or when dependencies change
   npm start
   ```
-  
-  
-  ```
-
-The app should be available on <http://localhost:8080>
+ 
+The app should then be available on <http://localhost:8080>
 
 ### Note: <http://localhost:8080> not <http://localhost:3000> 
 
@@ -119,7 +133,7 @@ github pages site associated with the repo; see [/docs/github-pages.md](/docs/gi
 * open in a web browser: `target/site/apidocs/index.html`
 
 You can also see the javadoc for the main branch and all open pull requests on the 
-github pages site associated with the repo; see [/docs/github-pages.md](/docs/github-pages.md) for more info.
+github pages site associated with the repo; see [docs/github-pages.md](/docs/github-pages.md) for more info.
 
 * For documentation on Javadoc, see: <https://www.oracle.com/java/technologies/javase/javadoc-tool.html>
 
