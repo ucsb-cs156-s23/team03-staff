@@ -11,6 +11,4 @@ const systemInfoFixtures = {
     }
 };
 
-
-
 export { systemInfoFixtures };
